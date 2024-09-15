@@ -7,7 +7,19 @@ i18n
         resources: {
             en: {
                 translation: {
-                    "stayUpdated": "Stay Updated!"
+                    "signUp": {
+                        "stayUpdated": "Stay Updated!",
+                        "callToAction": "Join 60,000+ product managers receiving monthly updates on:",
+                        "bullet1": "Product discovery and building what matters",
+                        "bullet2": "Measuring to ensure updates are a success",
+                        "bullet3": "And much more!",
+                        "emailAddress": "Email address",
+                        "emailPlaceholder": "email@company.com",
+                        "submitButton": "Subscribe to monthly newsletter"
+                    },
+                    "confirmation": {
+                        "thanks": "Thanks for subscribing!"
+                    }
                 }
             },
         },
