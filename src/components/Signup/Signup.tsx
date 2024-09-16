@@ -26,9 +26,11 @@ function Signup({ setIsSubmitted }: SignupProps) {
             </ul>
             <form>
                 <label>{t("signUp.emailAddress")}
-                    <input type="text" />
+                    <input type="text"/>
                 </label>
-                <button type="button" onClick={handleSubmission}>{t("signUp.submitButton")}</button>
+                <button type="button" onClick={handleSubmission} data-testid="submit-button">
+                    {t("signUp.submitButton")}
+                </button>
             </form>
         </div>
     )
