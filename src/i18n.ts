@@ -18,7 +18,8 @@ i18n
                         "submitButton": "Subscribe to monthly newsletter"
                     },
                     "confirmation": {
-                        "thanks": "Thanks for subscribing!"
+                        "thanks": "Thanks for subscribing!",
+                        "message": "A confirmation email has been sent to {{email}}. Please open it and click the button inside to confirm your subscription."
                     }
                 }
             },

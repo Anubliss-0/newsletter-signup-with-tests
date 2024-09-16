@@ -1,22 +1,30 @@
+import { useState } from "react"
 import { useTranslation } from "../../i18n"
+import styles from "./Signup.module.scss"
 
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
     setEmailAddress: React.Dispatch<React.SetStateAction<string>>
 }
 
-function Signup({ setIsSubmitted }: SignupProps) {
+function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
     const { t } = useTranslation()
+    const [emailInput, setEmailInput] = useState("")
+    const [fadeComponent, setFadeComponent] = useState(false)
+    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-    // TODO
-    // UseEffect will need to be used here to add the class before removing the button.
+    const handleSubmission = async () => {
+        setEmailAddress(emailInput)
+        setFadeComponent(true)
 
-    const handleSubmission = () => {
+        await delay(1000)
+
         setIsSubmitted(true)
-    }
+        setFadeComponent(false)
+    };
 
     return (
-        <div>
+        <div className={fadeComponent ? styles.fadeComponent : ""}>
             <h1>{t("signUp.stayUpdated")}</h1>
             <p>{t("signUp.callToAction")}</p>
             <ul>
@@ -26,7 +34,7 @@ function Signup({ setIsSubmitted }: SignupProps) {
             </ul>
             <form>
                 <label>{t("signUp.emailAddress")}
-                    <input type="text"/>
+                    <input type="text" onChange={(e) => setEmailInput(e.target.value)} />
                 </label>
                 <button type="button" onClick={handleSubmission}>
                     {t("signUp.submitButton")}

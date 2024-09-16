@@ -11,10 +11,7 @@ function Confirmation({ setIsSubmitted, emailAddress }: ConfirmationProps) {
     return (
         <div>
             <h1>{t("confirmation.thanks")}</h1>
-            {/* This line is a test, it will be interpolated later,
-            Possibly can be passed to i18n and interpolated there,
-            otherwise the string can just be split in two. */}
-            <p>{emailAddress}</p>
+            <p>{t("confirmation.message", {name: {emailAddress}})}</p>
         </div>
     )
 }
