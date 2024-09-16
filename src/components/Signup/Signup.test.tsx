@@ -5,35 +5,48 @@ import '@testing-library/jest-dom'
 
 vitest.mock('react-i18next', () => ({
     useTranslation: () => {
-      return {
-        t: (str: string) => str,
-        i18n: {
-          changeLanguage: () => new Promise(() => {}),
-        },
-      };
+        return {
+            t: (str: string) => str,
+            i18n: {
+                changeLanguage: () => new Promise(() => { }),
+            },
+        };
     },
     initReactI18next: {
-      type: '3rdParty',
-      init: () => {},
+        type: '3rdParty',
+        init: () => { },
     }
-  }));
+}));
 
 describe('Signup Component', () => {
-  it('renders the signup form correctly', () => {
-    render(<Signup setIsSubmitted={vitest.fn()} setEmailAddress={vitest.fn()} />)
 
-    expect(screen.getByText('signUp.stayUpdated')).toBeInTheDocument()
-    expect(screen.getByText('signUp.emailAddress')).toBeInTheDocument()
-    expect(screen.getByText('signUp.submitButton')).toBeInTheDocument()
-  })
+    // Test case 1: Ensures that the signup form renders with the correct text
+    it('renders the signup form correctly', () => {
+        // passing mock functions for setIsSubmitted and setEmailAddress props.
+        render(<Signup setIsSubmitted={vitest.fn()} setEmailAddress={vitest.fn()} />)
+        
+        // Assert that the h1 element is present (better practice for heading)
+        expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
 
-  it('calls setIsSubmitted when submit button is clicked', () => {
-    const mockSetIsSubmitted = vitest.fn()
+        // Assert that the input field is associated with its label
+        expect(screen.getByLabelText('signUp.emailAddress')).toBeInTheDocument()
 
-    render(<Signup setIsSubmitted={mockSetIsSubmitted} setEmailAddress={vitest.fn()} />)
+        // Assert that the button element is present (using button role)
+        expect(screen.getByRole('button', { name: 'signUp.submitButton' })).toBeInTheDocument()
+    })
 
-    fireEvent.click(screen.getByTestId('submit-button'))
+    // Test case 2: Ensures that clicking the submit button triggers the setIsSubmitted function
+    it('calls setIsSubmitted when submit button is clicked', () => {
+        // Create a mock function to track if setIsSubmitted is called
+        const mockSetIsSubmitted = vitest.fn()
 
-    expect(mockSetIsSubmitted).toHaveBeenCalledWith(true)
-  })
+        // Render the Signup component and pass the mockSetIsSubmitted function as a prop
+        render(<Signup setIsSubmitted={mockSetIsSubmitted} setEmailAddress={vitest.fn()} />)
+
+        // Simulate a click on the submit button using its role
+        fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+
+        // Assert that the mockSetIsSubmitted function was called with the argument "true"
+        expect(mockSetIsSubmitted).toHaveBeenCalledWith(true)
+    })
 })

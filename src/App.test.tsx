@@ -8,13 +8,13 @@ vitest.mock('react-i18next', () => ({
     return {
       t: (str: string) => str,
       i18n: {
-        changeLanguage: () => new Promise(() => {}),
+        changeLanguage: () => new Promise(() => { }),
       },
     };
   },
   initReactI18next: {
     type: '3rdParty',
-    init: () => {},
+    init: () => { },
   }
 }));
 
@@ -22,21 +22,16 @@ describe('App Component', () => {
   it('renders Signup component initially and not Confirmation', () => {
     render(<App />)
 
-    // Ensure Signup form is displayed initially
-    expect(screen.getByText('signUp.stayUpdated')).toBeInTheDocument()
-    expect(screen.queryByText('confirmation.thanks')).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'signUp.stayUpdated' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
   })
 
   it('displays Confirmation component after form submission', () => {
     render(<App />)
 
-    // Simulate form submission by clicking the submit button
-    fireEvent.click(screen.getByTestId('submit-button'))
+    fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
 
-    // Ensure Confirmation message is displayed after submission
-    expect(screen.getByText('confirmation.thanks')).toBeInTheDocument()
-
-    // Ensure Signup form is not displayed after submission
-    expect(screen.queryByText('signUp.stayUpdated')).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'signUp.stayUpdated' })).not.toBeInTheDocument()
   })
 })

@@ -28,7 +28,7 @@ function Signup({ setIsSubmitted }: SignupProps) {
                 <label>{t("signUp.emailAddress")}
                     <input type="text"/>
                 </label>
-                <button type="button" onClick={handleSubmission} data-testid="submit-button">
+                <button type="button" onClick={handleSubmission}>
                     {t("signUp.submitButton")}
                 </button>
             </form>
