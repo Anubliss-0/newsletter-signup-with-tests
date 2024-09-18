@@ -1,13 +1,12 @@
-import { useTranslation } from "../../i18n"
+import { withTranslation } from "../../i18n"
 
 type ConfirmationProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
     emailAddress: string
+    t: (key: string) => string
 }
 
-function Confirmation({ setIsSubmitted, emailAddress }: ConfirmationProps) {
-    const { t } = useTranslation()
-
+function Confirmation({ setIsSubmitted, emailAddress, t }: ConfirmationProps) {
     return (
         <div data-testid = "confirmation">
             <h1>{t("confirmation.thanks")}</h1>
@@ -16,4 +15,6 @@ function Confirmation({ setIsSubmitted, emailAddress }: ConfirmationProps) {
     )
 }
 
-export default Confirmation
+export {Confirmation}
+const ConfirmationWithTranslation = withTranslation()(Confirmation)
+export default ConfirmationWithTranslation

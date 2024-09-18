@@ -44,6 +44,6 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     )
 }
 
-export { Signup };
-const SignupWithTranslation = withTranslation()(Signup);
-export default SignupWithTranslation;
+export { Signup }
+const SignupWithTranslation = withTranslation()(Signup)
+export default SignupWithTranslation
