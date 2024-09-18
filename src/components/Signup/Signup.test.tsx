@@ -1,28 +1,13 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect, vitest } from 'vitest'
 import '@testing-library/jest-dom'
-import Signup from './Signup'
-
-vitest.mock('react-i18next', () => ({
-    useTranslation: () => {
-        return {
-            t: (str: string) => str,
-            i18n: {
-                changeLanguage: () => new Promise(() => { }),
-            },
-        };
-    },
-    initReactI18next: {
-        type: '3rdParty',
-        init: () => { },
-    }
-}));
+import { Signup } from './Signup'
 
 describe('Signup Component', () => {
 
     it('renders the signup form correctly', () => {
-        render(<Signup setIsSubmitted={vitest.fn()} setEmailAddress={vitest.fn()} />)
-        
+        render(<Signup setIsSubmitted={vitest.fn()} setEmailAddress={vitest.fn()} t={key => key} />)
+
         expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
         expect(screen.getByLabelText('signUp.emailAddress')).toBeInTheDocument()
         expect(screen.getByRole('button', { name: 'signUp.submitButton' })).toBeInTheDocument()
@@ -32,7 +17,7 @@ describe('Signup Component', () => {
         const mockSetIsSubmitted = vitest.fn()
         const mockSetEmailAddress = vitest.fn()
 
-        render(<Signup setIsSubmitted={mockSetIsSubmitted} setEmailAddress={mockSetEmailAddress} />)
+        render(<Signup setIsSubmitted={mockSetIsSubmitted} setEmailAddress={mockSetEmailAddress} t={key => key} />)
 
         fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
         fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))

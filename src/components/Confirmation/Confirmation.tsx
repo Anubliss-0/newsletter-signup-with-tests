@@ -9,7 +9,7 @@ function Confirmation({ setIsSubmitted, emailAddress }: ConfirmationProps) {
     const { t } = useTranslation()
 
     return (
-        <div>
+        <div data-testid = "confirmation">
             <h1>{t("confirmation.thanks")}</h1>
             <p>{t("confirmation.message", { email: emailAddress })}</p>
         </div>

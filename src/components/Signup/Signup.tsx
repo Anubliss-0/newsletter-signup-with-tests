@@ -1,14 +1,14 @@
 import { useState } from "react"
-import { useTranslation } from "../../i18n"
+import { withTranslation } from "../../i18n"
 import styles from "./Signup.module.scss"
 
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
     setEmailAddress: React.Dispatch<React.SetStateAction<string>>
+    t: (key: string) => string
 }
 
-function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
-    const { t } = useTranslation()
+function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     const [emailInput, setEmailInput] = useState("")
     const [fadeComponent, setFadeComponent] = useState(false)
     const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -44,4 +44,6 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
     )
 }
 
-export default Signup
+export { Signup };
+const SignupWithTranslation = withTranslation()(Signup);
+export default SignupWithTranslation;
