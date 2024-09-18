@@ -6,16 +6,20 @@ import '@testing-library/jest-dom'
 describe('App Component', () => {
 
   // Mock i18next with withTranslation HOC
-vitest.mock('./i18n', () => ({
-  withTranslation: () => (Component: React.ComponentType) => (props: unknown) => (
-    <Component t={(key: string, options?: unknown) => {
-      if (key === "confirmation.message") {
-        return `A confirmation email has been sent to ${options?.email}`
-      }
-      return key
-    }} {...props} />
-  ),
-}))
+  vitest.mock('./i18n', () => ({
+    withTranslation: () => (Component: React.ComponentType<{ t: (key: string, options?: { email?: string }) => string }>) =>
+      (props: Omit<React.ComponentProps<typeof Component>, 't'>) => (
+        <Component
+          t={(key: string, options?: { email?: string }) => {
+            if (key === "confirmation.message" && options?.email) {
+              return `A confirmation email has been sent to ${options.email}`;
+            }
+            return key;
+          }}
+          {...props}
+        />
+      ),
+  }))
 
   it('renders Signup component initially and not Confirmation', () => {
     render(<App />)
