@@ -24,8 +24,8 @@ describe('App Component', () => {
   it('renders Signup component initially and not Confirmation', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
-    expect(screen.queryByRole('heading', { level: 1, name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.getByTestId('sign-up')).toBeInTheDocument()
+    expect(screen.queryByTestId('confirmation')).not.toBeInTheDocument()
   })
 
   it('displays Confirmation component with entered email address after form submission', async () => {
@@ -69,10 +69,10 @@ describe('App Component', () => {
 
   
     await waitFor(() => {
-      expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
+      expect(screen.getByTestId('sign-up')).toBeInTheDocument()
     })
 
-    expect(screen.queryByRole('heading', { level: 1, name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.queryByTestId('confirmation')).not.toBeInTheDocument()
     expect(screen.getByLabelText('signUp.emailAddress')).toHaveValue('')
   })
 })
