@@ -24,8 +24,8 @@ describe('App Component', () => {
   it('renders Signup component initially and not Confirmation', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { name: 'signUp.stayUpdated' })).toBeInTheDocument()
-    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 1, name: 'confirmation.thanks' })).not.toBeInTheDocument()
   })
 
   it('displays Confirmation component with entered email address after form submission', async () => {
@@ -36,10 +36,10 @@ describe('App Component', () => {
     fireEvent.animationEnd(screen.getByTestId('sign-up'))
 
     await waitFor(() => {
-      expect(screen.queryByRole('heading', { name: 'signUp.stayUpdated' })).not.toBeInTheDocument()
+      expect(screen.queryByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).not.toBeInTheDocument()
     })
 
-    expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'confirmation.thanks' })).toBeInTheDocument()
     expect(screen.getByText(/A confirmation email has been sent to test@test.com/i)).toBeInTheDocument()
   })
 
@@ -50,7 +50,7 @@ describe('App Component', () => {
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
 
     expect(screen.getByRole('alert')).toBeInTheDocument()
-    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 1, name: 'confirmation.thanks' })).not.toBeInTheDocument()
   })
 
   it('displays Signup component with blank email after dismissing confirmation', async () => {
@@ -61,7 +61,7 @@ describe('App Component', () => {
     fireEvent.animationEnd(screen.getByTestId('sign-up'))
   
     await waitFor(() => {
-      expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { level: 1, name: 'confirmation.thanks' })).toBeInTheDocument()
     })
   
     fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }))
@@ -69,10 +69,10 @@ describe('App Component', () => {
 
   
     await waitFor(() => {
-      expect(screen.getByRole('heading', { name: 'signUp.stayUpdated' })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
     })
 
-    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 1, name: 'confirmation.thanks' })).not.toBeInTheDocument()
     expect(screen.getByLabelText('signUp.emailAddress')).toHaveValue('')
   })
 })
