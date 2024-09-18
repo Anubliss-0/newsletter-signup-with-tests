@@ -15,6 +15,7 @@ function App() {
       {isSubmitted && <Confirmation
         setIsSubmitted={setIsSubmitted}
         emailAddress={emailAddress}
+        setEmailAddress={setEmailAddress}
       />}
     </>
   )

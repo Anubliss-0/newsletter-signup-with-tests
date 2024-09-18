@@ -22,10 +22,24 @@ describe('Signup Component', () => {
         fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
         fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
 
-        expect(mockSetEmailAddress).toHaveBeenCalledWith('test@test.com')
-
+        fireEvent.animationEnd(screen.getByRole('button', { name: 'signUp.submitButton' }));
+        
         await waitFor(() => {
+            expect(mockSetEmailAddress).toHaveBeenCalledWith('test@test.com')
             expect(mockSetIsSubmitted).toHaveBeenCalledWith(true)
         })
+    })
+
+    it('does not call setIsSubmitted or setEmailAddress if the email is invalid', async () => {
+        const mockSetIsSubmitted = vitest.fn()
+        const mockSetEmailAddress = vitest.fn()
+
+        render(<Signup setIsSubmitted={mockSetIsSubmitted} setEmailAddress={mockSetEmailAddress} t={key => key} />)
+
+        fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'invalid-email' } })
+        fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+
+        expect(mockSetEmailAddress).not.toHaveBeenCalled()
+        expect(mockSetIsSubmitted).not.toHaveBeenCalled()
     })
 })

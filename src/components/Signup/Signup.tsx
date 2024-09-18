@@ -10,22 +10,25 @@ type SignupProps = {
 
 function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     const [emailInput, setEmailInput] = useState("")
-    const [fadeComponent, setFadeComponent] = useState(false)
-    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    const [fadeDirection, setFadeDirection] = useState<"in" | "out">("in");
 
-    const handleSubmission = async () => {
-        setEmailAddress(emailInput)
-        setFadeComponent(true)
+    const handleSubmission = () => {
+        setFadeDirection("out")
+    };
 
-        await delay(1000)
-
-        setIsSubmitted(true)
-        setFadeComponent(false)
+    const onFadeEnd = () => {
+        if (fadeDirection === "out") {
+            setIsSubmitted(true)
+            setEmailAddress(emailInput)
+        }
     };
 
     return (
-        <div className={fadeComponent ? styles.fadeComponent : ""}>
-            <h1>{t("signUp.stayUpdated")}</h1>
+        <section
+            className={fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}
+            aria-live="polite"
+            onAnimationEnd={onFadeEnd}
+        >            <h1>{t("signUp.stayUpdated")}</h1>
             <p>{t("signUp.callToAction")}</p>
             <ul>
                 <li>{t("signUp.bullet1")}</li>
@@ -40,7 +43,7 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
                     {t("signUp.submitButton")}
                 </button>
             </form>
-        </div>
+        </section>
     )
 }
 

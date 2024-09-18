@@ -12,7 +12,7 @@ describe('App Component', () => {
         <Component
           t={(key: string, options?: { email?: string }) => {
             if (key === "confirmation.message" && options?.email) {
-              return `A confirmation email has been sent to ${options.email}`;
+              return `A confirmation email has been sent to ${options.email}`
             }
             return key;
           }}
@@ -33,6 +33,7 @@ describe('App Component', () => {
 
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+    fireEvent.animationEnd(screen.getByRole('button', { name: 'signUp.submitButton' }));
 
     await waitFor(() => {
       expect(screen.queryByRole('heading', { name: 'signUp.stayUpdated' })).not.toBeInTheDocument()
@@ -40,5 +41,35 @@ describe('App Component', () => {
 
     expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
     expect(screen.getByText(/A confirmation email has been sent to test@test.com/i)).toBeInTheDocument()
+  })
+
+  it('displays error when invalid email address is submitted', () => {
+    render(<App />)
+
+    fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: '12345678' } })
+    fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+
+    expect(screen.getByRole('alert', { name: 'signUp.emailError' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
+  })
+
+  it('displays Signup component with blank email after dismissing confirmation', async () => {
+    render(<App />)
+  
+    fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
+    fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+  
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
+    })
+  
+    fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismissButton' }))
+  
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { name: 'signUp.stayUpdated' })).toBeInTheDocument()
+    })
+
+    expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
+    expect(screen.getByLabelText('signUp.emailAddress')).toHaveValue('')
   })
 })
