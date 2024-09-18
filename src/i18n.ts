@@ -1,5 +1,5 @@
-import i18n from 'i18next';
-import { initReactI18next, useTranslation, withTranslation } from 'react-i18next';
+import i18n from 'i18next'
+import { initReactI18next, useTranslation, withTranslation } from 'react-i18next'
 
 i18n
     .use(initReactI18next)
@@ -30,6 +30,6 @@ i18n
         interpolation: {
             escapeValue: false
         }
-    });
+    })
 
-export { i18n, useTranslation, withTranslation };
+export { i18n, useTranslation, withTranslation }

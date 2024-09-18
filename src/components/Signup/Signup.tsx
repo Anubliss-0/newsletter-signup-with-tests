@@ -6,7 +6,7 @@ type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
     setEmailAddress: React.Dispatch<React.SetStateAction<string>>
     t: (key: string) => string
-};
+}
 
 function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     const [emailInput, setEmailInput] = useState("")
@@ -22,12 +22,12 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
 
         setFadeDirection("out")
         setInvalidEntry(false)
-    };
+    }
 
     const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailInput(e.target.value)
         setInvalidEntry(false)
-    };
+    }
 
     const onFadeEnd = () => {
         if (fadeDirection === "out") {

@@ -14,7 +14,7 @@ describe('App Component', () => {
             if (key === "confirmation.message" && options?.email) {
               return `A confirmation email has been sent to ${options.email}`
             }
-            return key;
+            return key
           }}
           {...props}
         />

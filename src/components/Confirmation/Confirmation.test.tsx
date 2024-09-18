@@ -28,8 +28,8 @@ describe('Confirmation Component', () => {
     })
 
     it('resets email and submission state on dismiss button press', async () => {
-        const mockSetIsSubmitted = vitest.fn();
-        const mockSetEmailAddress = vitest.fn();
+        const mockSetIsSubmitted = vitest.fn()
+        const mockSetEmailAddress = vitest.fn()
     
         render(
             <Confirmation
@@ -38,14 +38,14 @@ describe('Confirmation Component', () => {
                 setEmailAddress={mockSetEmailAddress}
                 t={(key) => key}
             />
-        );
+        )
     
-        fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }));
+        fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }))
         fireEvent.animationEnd(screen.getByTestId('confirmation'))
     
         await waitFor(() => {
-            expect(mockSetEmailAddress).toHaveBeenCalledWith("");
-            expect(mockSetIsSubmitted).toHaveBeenCalledWith(false);
-        });
-    });
+            expect(mockSetEmailAddress).toHaveBeenCalledWith("")
+            expect(mockSetIsSubmitted).toHaveBeenCalledWith(false)
+        })
+    })
 })

@@ -4,7 +4,7 @@ import styles from "./Confirmation.module.scss"
 
 type ConfirmationProps = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
-  emailAddress: string;
+  emailAddress: string
   setEmailAddress: React.Dispatch<React.SetStateAction<string>>
   t: (key: string) => string
 }
@@ -13,15 +13,15 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: Conf
   const [fadeDirection, setFadeDirection] = useState<"in" | "out">("in")
 
   const handleDismiss = () => {
-    setFadeDirection("out");
-  };
+    setFadeDirection("out")
+  }
 
   const onFadeEnd = () => {
     if (fadeDirection === "out") {
       setIsSubmitted(false)
       setEmailAddress("")
     }
-  };
+  }
 
   return (
     <section
