@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect, vitest } from 'vitest'
-import Signup from './Signup'
 import '@testing-library/jest-dom'
+import Signup from './Signup'
 
 vitest.mock('react-i18next', () => ({
     useTranslation: () => {
@@ -22,7 +22,8 @@ describe('Signup Component', () => {
 
     it('renders the signup form correctly', () => {
         render(<Signup setIsSubmitted={vitest.fn()} setEmailAddress={vitest.fn()} />)
-        expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+        
+        expect(screen.getByRole('heading', { level: 1, name: 'signUp.stayUpdated' })).toBeInTheDocument()
         expect(screen.getByLabelText('signUp.emailAddress')).toBeInTheDocument()
         expect(screen.getByRole('button', { name: 'signUp.submitButton' })).toBeInTheDocument()
     })

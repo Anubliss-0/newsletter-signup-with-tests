@@ -4,17 +4,19 @@ import App from './App'
 import '@testing-library/jest-dom'
 
 vitest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key: string, options: { name?: { emailAddress?: string } } = {}) => {
-      if (key === 'confirmation.message' && options.name?.emailAddress) {
-        return `A confirmation email has been sent to ${options.name.emailAddress}`;
-      }
-      return key;
-    },
-    i18n: {
-      changeLanguage: () => new Promise(() => { }),
-    },
-  }),
+  useTranslation: () => {
+    return {
+      t: (key: string, options?: Record<string, string>) => {
+        if (key === "confirmation.message" && options?.email) {
+          return `A confirmation email has been sent to ${options.email}. Please open it and click the button inside to confirm your subscription.`;
+        }
+        return key;
+      },
+      i18n: {
+        changeLanguage: () => new Promise(() => { }),
+      },
+    };
+  },
   initReactI18next: {
     type: '3rdParty',
     init: () => { },

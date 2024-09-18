@@ -11,7 +11,7 @@ function Confirmation({ setIsSubmitted, emailAddress }: ConfirmationProps) {
     return (
         <div>
             <h1>{t("confirmation.thanks")}</h1>
-            <p>{t("confirmation.message", {name: {emailAddress}})}</p>
+            <p>{t("confirmation.message", { email: emailAddress })}</p>
         </div>
     )
 }
