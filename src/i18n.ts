@@ -15,7 +15,8 @@ i18n
                         "bullet3": "And much more!",
                         "emailAddress": "Email address",
                         "emailPlaceholder": "email@company.com",
-                        "submitButton": "Subscribe to monthly newsletter"
+                        "submitButton": "Subscribe to monthly newsletter",
+                        "invalidEntryMessage": "Valid email required"
                     },
                     "confirmation": {
                         "thanks": "Thanks for subscribing!",

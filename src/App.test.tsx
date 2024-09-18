@@ -33,7 +33,7 @@ describe('App Component', () => {
 
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
-    fireEvent.animationEnd(screen.getByRole('button', { name: 'signUp.submitButton' }));
+    fireEvent.animationEnd(screen.getByTestId('sign-up'))
 
     await waitFor(() => {
       expect(screen.queryByRole('heading', { name: 'signUp.stayUpdated' })).not.toBeInTheDocument()
@@ -49,7 +49,7 @@ describe('App Component', () => {
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: '12345678' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
 
-    expect(screen.getByRole('alert', { name: 'signUp.emailError' })).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'confirmation.thanks' })).not.toBeInTheDocument()
   })
 
@@ -58,12 +58,15 @@ describe('App Component', () => {
   
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
+    fireEvent.animationEnd(screen.getByTestId('sign-up'))
   
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'confirmation.thanks' })).toBeInTheDocument()
     })
   
-    fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismissButton' }))
+    fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }))
+    fireEvent.animationEnd(screen.getByTestId('confirmation'))
+
   
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'signUp.stayUpdated' })).toBeInTheDocument()

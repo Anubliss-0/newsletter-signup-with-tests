@@ -22,7 +22,7 @@ describe('Signup Component', () => {
         fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
         fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
 
-        fireEvent.animationEnd(screen.getByRole('button', { name: 'signUp.submitButton' }));
+        fireEvent.animationEnd(screen.getByTestId('sign-up'))
         
         await waitFor(() => {
             expect(mockSetEmailAddress).toHaveBeenCalledWith('test@test.com')

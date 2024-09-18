@@ -41,7 +41,7 @@ describe('Confirmation Component', () => {
         );
     
         fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }));
-        fireEvent.animationEnd(screen.getByRole('button', { name: 'confirmation.dismiss' }));
+        fireEvent.animationEnd(screen.getByTestId('confirmation'))
     
         await waitFor(() => {
             expect(mockSetEmailAddress).toHaveBeenCalledWith("");

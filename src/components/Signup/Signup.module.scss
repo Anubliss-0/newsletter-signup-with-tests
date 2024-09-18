@@ -23,3 +23,11 @@
       opacity: 0;
     }
   }
+
+  .input {
+    border: 2px solid blue;
+
+    &.invalid {
+      border: 3px solid red;
+    }
+  }

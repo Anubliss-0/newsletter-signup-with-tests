@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { withTranslation } from "../../i18n";
-import styles from "./Confirmation.module.scss";
+import { useState } from "react"
+import { withTranslation } from "../../i18n"
+import styles from "./Confirmation.module.scss"
 
 type ConfirmationProps = {
-  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
   emailAddress: string;
-  setEmailAddress: React.Dispatch<React.SetStateAction<string>>;
-  t: (key: string) => string;
-};
+  setEmailAddress: React.Dispatch<React.SetStateAction<string>>
+  t: (key: string) => string
+}
 
 function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: ConfirmationProps) {
   const [fadeDirection, setFadeDirection] = useState<"in" | "out">("in")
@@ -18,8 +18,8 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: Conf
 
   const onFadeEnd = () => {
     if (fadeDirection === "out") {
-      setIsSubmitted(false);
-      setEmailAddress("");
+      setIsSubmitted(false)
+      setEmailAddress("")
     }
   };
 
@@ -28,16 +28,17 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: Conf
       className={fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}
       aria-live="polite"
       onAnimationEnd={onFadeEnd}
+      data-testid="confirmation"
     >
-      <h1 id="heading">{t("confirmation.thanks")}</h1>
+      <h1>{t("confirmation.thanks")}</h1>
       <p>{t("confirmation.message", { email: emailAddress })}</p>
       <button type="button" onClick={handleDismiss}>
         {t("confirmation.dismiss")}
       </button>
     </section>
-  );
+  )
 }
 
-export { Confirmation };
-const ConfirmationWithTranslation = withTranslation()(Confirmation);
-export default ConfirmationWithTranslation;
+export { Confirmation }
+const ConfirmationWithTranslation = withTranslation()(Confirmation)
+export default ConfirmationWithTranslation
