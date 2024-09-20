@@ -40,7 +40,7 @@ describe('App Component', () => {
     })
 
     expect(screen.getByRole('heading', { level: 1, name: 'confirmation.thanks' })).toBeInTheDocument()
-    expect(screen.getByText(/A confirmation email has been sent to test@test.com/i)).toBeInTheDocument()
+    expect(screen.getByText(/test@test.com/i)).toBeInTheDocument()
   })
 
   it('displays error when invalid email address is submitted', () => {

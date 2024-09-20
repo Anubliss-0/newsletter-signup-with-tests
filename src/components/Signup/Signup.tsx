@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import { withTranslation } from "../../i18n"
 import styles from "./Signup.module.scss"
+import illustration from '../../assets/images/illustration-sign-up-desktop.svg'
 
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
@@ -14,12 +15,11 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     const [invalidEntry, setInvalidEntry] = useState(false)
     const emailInputRef = useRef<HTMLInputElement>(null)
 
-    const handleSubmission = () => {
-        if (emailInputRef.current && !emailInputRef.current.checkValidity()) {
-            setInvalidEntry(true)
-            return
-        }
-
+    const handleSubmission = (e: React.FormEvent) => {
+        e.preventDefault()
+        
+        if (!emailInputRef.current?.checkValidity()) return
+    
         setFadeDirection("out")
         setInvalidEntry(false)
     }
@@ -38,41 +38,48 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
 
     return (
         <section
-            className={fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}
+            className={`${styles.signup} ${fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}`}
             aria-live="polite"
             onAnimationEnd={onFadeEnd}
             data-testid="sign-up"
         >
-            <h1>{t("signUp.stayUpdated")}</h1>
-            <p>{t("signUp.callToAction")}</p>
-            <ul>
-                <li>{t("signUp.bullet1")}</li>
-                <li>{t("signUp.bullet2")}</li>
-                <li>{t("signUp.bullet3")}</li>
-            </ul>
-            <form>
-                <label>
-                    {t("signUp.emailAddress")}
-                    <input
-                        className={`${styles.input} ${invalidEntry ? styles.invalid : ""}`}
-                        ref={emailInputRef}
-                        type="email"
-                        required
-                        onChange={handleEmailInputChange}
-                        aria-invalid={invalidEntry ? "true" : "false"}
-                    />
-                </label>
+            <div className={styles.left}>
+                <h1>{t("signUp.stayUpdated")}</h1>
+                <p>{t("signUp.callToAction")}</p>
+                <ul>
+                    <li>{t("signUp.bullet1")}</li>
+                    <li>{t("signUp.bullet2")}</li>
+                    <li>{t("signUp.bullet3")}</li>
+                </ul>
+                <form className={styles.form} onSubmit={handleSubmission}>
+                    <label>
+                        {t("signUp.emailAddress")}
+                        <input
+                            className={`${styles.input} ${invalidEntry ? styles.invalid : ""}`}
+                            ref={emailInputRef}
+                            type="email"
+                            required
+                            onChange={handleEmailInputChange}
+                            onInvalid={() => setInvalidEntry(true)}
+                            aria-invalid={invalidEntry ? "true" : "false"}
+                            placeholder={t('signUp.emailPlaceholder')}
+                        />
+                    </label>
 
-                {invalidEntry && (
-                    <span role="alert" className={styles.errorMessage}>
-                        {t("signUp.invalidEntryMessage")}
-                    </span>
-                )}
+                    {invalidEntry && (
+                        <span role="alert" className={styles.errorMessage}>
+                            {t("signUp.invalidEntryMessage")}
+                        </span>
+                    )}
 
-                <button type="button" onClick={handleSubmission}>
-                    {t("signUp.submitButton")}
-                </button>
-            </form>
+                    <button>
+                        {t("signUp.submitButton")}
+                    </button>
+                </form>
+            </div>
+            <div className={styles.right}>
+                <img src={illustration} alt="" />
+            </div>
         </section>
     )
 }

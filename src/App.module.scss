@@ -1,0 +1,6 @@
+@import './styles/utilities.scss';
+
+.appContainer {
+    height: 100vh;
+    @include flex-column(center, center);
+}

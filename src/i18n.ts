@@ -8,7 +8,7 @@ i18n
             en: {
                 translation: {
                     "signUp": {
-                        "stayUpdated": "Stay Updated!",
+                        "stayUpdated": "Stay updated!",
                         "callToAction": "Join 60,000+ product managers receiving monthly updates on:",
                         "bullet1": "Product discovery and building what matters",
                         "bullet2": "Measuring to ensure updates are a success",
