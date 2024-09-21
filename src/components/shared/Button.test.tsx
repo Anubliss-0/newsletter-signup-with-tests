@@ -1,4 +1,12 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { describe, it, expect, vitest } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
 import '@testing-library/jest-dom'
-import {Button} from './Button'
+import { Button } from './Button'
+
+describe('Button Component', () => {
+    it('Renders the button component correctly', () => {
+        render(<Button t={key => key} />)
+
+        expect(screen.getByRole('button'))
+    })
+})

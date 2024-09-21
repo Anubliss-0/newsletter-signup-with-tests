@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import { withTranslation } from "../../i18n"
 import styles from "./Signup.module.scss"
 import illustration from '../../assets/images/illustration-sign-up-desktop.svg'
+import Button from "../shared/Button"
 
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,9 +18,9 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
 
     const handleSubmission = (e: React.FormEvent) => {
         e.preventDefault()
-        
+
         if (!emailInputRef.current?.checkValidity()) return
-    
+
         setFadeDirection("out")
         setInvalidEntry(false)
     }
@@ -72,9 +73,7 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
                         </span>
                     )}
 
-                    <button>
-                        {t("signUp.submitButton")}
-                    </button>
+                    <Button />
                 </form>
             </div>
             <div className={styles.right}>
