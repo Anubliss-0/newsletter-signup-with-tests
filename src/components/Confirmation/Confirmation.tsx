@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import styles from "./Confirmation.module.scss"
+import Button from "../shared/Button"
 
 type ConfirmationProps = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
@@ -32,9 +33,7 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress }: Confirm
     >
       <h1>{t("confirmation.thanks")}</h1>
       <p>{t("confirmation.message", { email: emailAddress })}</p>
-      <button type="button" onClick={handleDismiss}>
-        {t("confirmation.dismiss")}
-      </button>
+      <Button content={t("confirmation.dismiss")} onClick={handleDismiss} />
     </section>
   )
 }

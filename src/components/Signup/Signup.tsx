@@ -73,7 +73,7 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                         </span>
                     )}
 
-                    <Button />
+                    <Button content={t('signUp.submitButton')}/>
                 </form>
             </div>
             <div className={styles.right}>

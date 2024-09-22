@@ -1,13 +1,14 @@
-import { useTranslation } from 'react-i18next'
 import styles from './Button.module.scss'
 
+type ButtonProps = {
+    content: string
+    onClick?: () => void 
+}
 
-function Button() {
-    const { t } = useTranslation()
-
+function Button({ content, onClick }: ButtonProps) {
     return (
-        <button className={styles.button}>
-            {t("signUp.submitButton")}
+        <button className={styles.button} onClick={onClick}>
+            {content}
         </button>
     )
 }
