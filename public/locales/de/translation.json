@@ -1,0 +1,18 @@
+{
+    "signUp": {
+      "stayUpdated": "Bleiben Sie auf dem Laufenden!",
+      "callToAction": "Schließen Sie sich 60.000+ Produktmanagern an, die monatliche Updates zu folgenden Themen erhalten:",
+      "bullet1": "Produktentdeckung und Entwicklung von relevanten Lösungen",
+      "bullet2": "Messung des Erfolgs von Updates",
+      "bullet3": "Und vieles mehr!",
+      "emailAddress": "E-Mail-Adresse",
+      "emailPlaceholder": "email@unternehmen.com",
+      "submitButton": "Für den monatlichen Newsletter anmelden",
+      "invalidEntryMessage": "Gültige E-Mail-Adresse erforderlich"
+    },
+    "confirmation": {
+      "thanks": "Danke für Ihre Anmeldung!",
+      "message": "Eine Bestätigungs-E-Mail wurde an <strong>{{email}}</strong> gesendet. Bitte öffnen Sie die E-Mail und klicken Sie auf die Schaltfläche, um Ihre Anmeldung zu bestätigen.",
+      "dismiss": "Nachricht schließen"
+    }
+  }

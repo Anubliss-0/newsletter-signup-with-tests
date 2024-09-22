@@ -1,0 +1,18 @@
+{
+    "signUp": {
+      "stayUpdated": "Blijf op de hoogte!",
+      "callToAction": "Sluit je aan bij 60.000+ productmanagers die maandelijks updates ontvangen over:",
+      "bullet1": "Productontdekking en het bouwen van wat ertoe doet",
+      "bullet2": "Meten om ervoor te zorgen dat updates succesvol zijn",
+      "bullet3": "En nog veel meer!",
+      "emailAddress": "E-mailadres",
+      "emailPlaceholder": "email@bedrijf.com",
+      "submitButton": "Inschrijven voor maandelijkse nieuwsbrief",
+      "invalidEntryMessage": "Geldig e-mailadres vereist"
+    },
+    "confirmation": {
+      "thanks": "Bedankt voor je inschrijving!",
+      "message": "Een bevestigingsmail is verzonden naar <strong>{{email}}</strong>. Open de mail en klik op de knop om je inschrijving te bevestigen.",
+      "dismiss": "Bericht sluiten"
+    }
+  }

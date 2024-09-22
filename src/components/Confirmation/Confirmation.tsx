@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { useTranslation } from "react-i18next"
+import { Trans, useTranslation } from "react-i18next"
 import styles from "./Confirmation.module.scss"
 import Button from "../shared/Button"
+import successImg from '../../assets/images/icon-success.svg'
 
 type ConfirmationProps = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
@@ -26,13 +27,20 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress }: Confirm
 
   return (
     <section
-      className={fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}
+      className={`${styles.confirmation} ${fadeDirection === "in" ? styles.fadeInComponent : styles.fadeOutComponent}`}
       aria-live="polite"
       onAnimationEnd={onFadeEnd}
       data-testid="confirmation"
     >
+      <img src={successImg} alt="" />
       <h1>{t("confirmation.thanks")}</h1>
-      <p>{t("confirmation.message", { email: emailAddress })}</p>
+      <Trans
+        i18nKey="confirmation.message"
+        values={{ email: emailAddress }}
+        components={{ strong: <strong /> }}
+      >
+        A confirmation email has been sent to <strong>{emailAddress}</strong>. Please open it and click the button inside to confirm your subscription.
+      </Trans>
       <Button content={t("confirmation.dismiss")} onClick={handleDismiss} />
     </section>
   )
