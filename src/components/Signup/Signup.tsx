@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { withTranslation } from "../../i18n"
+import { useTranslation } from "react-i18next"
 import styles from "./Signup.module.scss"
 import illustration from '../../assets/images/illustration-sign-up-desktop.svg'
 import Button from "../shared/Button"
@@ -7,10 +7,10 @@ import Button from "../shared/Button"
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
     setEmailAddress: React.Dispatch<React.SetStateAction<string>>
-    t: (key: string) => string
 }
 
-function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
+function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
+    const { t } = useTranslation()
     const [emailInput, setEmailInput] = useState("")
     const [fadeDirection, setFadeDirection] = useState<"in" | "out">("in")
     const [invalidEntry, setInvalidEntry] = useState(false)
@@ -83,6 +83,4 @@ function Signup({ setIsSubmitted, setEmailAddress, t }: SignupProps) {
     )
 }
 
-export { Signup }
-const SignupWithTranslation = withTranslation()(Signup)
-export default SignupWithTranslation
+export default Signup

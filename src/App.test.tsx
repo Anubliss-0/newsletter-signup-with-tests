@@ -3,24 +3,27 @@ import { describe, it, expect, vitest } from 'vitest'
 import App from './App'
 import '@testing-library/jest-dom'
 
+vitest.mock('react-i18next', () => ({
+  useTranslation: () => {
+      return {
+          t: (key: string, options?: Record<string, string>) => {
+              if (key === "confirmation.message" && options?.email) {
+                  return `A confirmation email has been sent to ${options.email}. Please open it and click the button inside to confirm your subscription.`
+              }
+              return key
+          },
+          i18n: {
+              changeLanguage: () => new Promise(() => { }),
+          },
+      };
+  },
+  initReactI18next: {
+      type: '3rdParty',
+      init: () => { },
+  }
+}))
+
 describe('App Component', () => {
-
-  // Mock i18next with withTranslation HOC
-  vitest.mock('./i18n', () => ({
-    withTranslation: () => (Component: React.ComponentType<{ t: (key: string, options?: { email?: string }) => string }>) =>
-      (props: Omit<React.ComponentProps<typeof Component>, 't'>) => (
-        <Component
-          t={(key: string, options?: { email?: string }) => {
-            if (key === "confirmation.message" && options?.email) {
-              return `A confirmation email has been sent to ${options.email}`
-            }
-            return key
-          }}
-          {...props}
-        />
-      ),
-  }))
-
   it('renders Signup component initially and not Confirmation', () => {
     render(<App />)
 
@@ -55,19 +58,19 @@ describe('App Component', () => {
 
   it('displays Signup component with blank email after dismissing confirmation', async () => {
     render(<App />)
-  
+
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
     fireEvent.animationEnd(screen.getByTestId('sign-up'))
-  
+
     await waitFor(() => {
       expect(screen.getByRole('heading', { level: 1, name: 'confirmation.thanks' })).toBeInTheDocument()
     })
-  
+
     fireEvent.click(screen.getByRole('button', { name: 'confirmation.dismiss' }))
     fireEvent.animationEnd(screen.getByTestId('confirmation'))
 
-  
+
     await waitFor(() => {
       expect(screen.getByTestId('sign-up')).toBeInTheDocument()
     })

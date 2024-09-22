@@ -1,11 +1,10 @@
-import { withTranslation } from "../../i18n"
+import { useTranslation } from 'react-i18next'
 import styles from './Button.module.scss'
 
-type ButtonProps = {
-    t: (key: string) => string
-}
 
-function Button({ t }: ButtonProps) {
+function Button() {
+    const { t } = useTranslation()
+
     return (
         <button className={styles.button}>
             {t("signUp.submitButton")}
@@ -13,6 +12,4 @@ function Button({ t }: ButtonProps) {
     )
 }
 
-export { Button }
-const ButtonWithTranslation = withTranslation()(Button)
-export default ButtonWithTranslation
+export default Button

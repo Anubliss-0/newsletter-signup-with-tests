@@ -1,0 +1,17 @@
+{
+    "signUp": {
+        "stayUpdated": "Stay updated!",
+        "callToAction": "Join 60,000+ product managers receiving monthly updates on:",
+        "bullet1": "Product discovery and building what matters",
+        "bullet2": "Measuring to ensure updates are a success",
+        "bullet3": "And much more!",
+        "emailAddress": "Email address",
+        "emailPlaceholder": "email@company.com",
+        "submitButton": "Subscribe to monthly newsletter",
+        "invalidEntryMessage": "Valid email required"
+    },
+    "confirmation": {
+        "thanks": "Thanks for subscribing!",
+        "message": "A confirmation email has been sent to {{email}}. Please open it and click the button inside to confirm your subscription."
+    }
+}

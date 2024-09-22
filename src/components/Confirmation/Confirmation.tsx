@@ -1,15 +1,15 @@
 import { useState } from "react"
-import { withTranslation } from "../../i18n"
+import { useTranslation } from "react-i18next"
 import styles from "./Confirmation.module.scss"
 
 type ConfirmationProps = {
   setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
   emailAddress: string
   setEmailAddress: React.Dispatch<React.SetStateAction<string>>
-  t: (key: string) => string
 }
 
-function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: ConfirmationProps) {
+function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress }: ConfirmationProps) {
+  const { t } = useTranslation()
   const [fadeDirection, setFadeDirection] = useState<"in" | "out">("in")
 
   const handleDismiss = () => {
@@ -39,6 +39,4 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress, t }: Conf
   )
 }
 
-export { Confirmation }
-const ConfirmationWithTranslation = withTranslation()(Confirmation)
-export default ConfirmationWithTranslation
+export default Confirmation
