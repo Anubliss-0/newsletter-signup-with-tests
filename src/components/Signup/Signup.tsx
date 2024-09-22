@@ -54,7 +54,14 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                 </ul>
                 <form className={styles.form} onSubmit={handleSubmission}>
                     <label>
-                        {t("signUp.emailAddress")}
+                        <div className={styles.labels}>
+                            {t("signUp.emailAddress")}
+                            {invalidEntry && (
+                                <span role="alert" className={styles.errorMessage}>
+                                    {t("signUp.invalidEntryMessage")}
+                                </span>
+                            )}
+                        </div>
                         <input
                             className={`${styles.input} ${invalidEntry ? styles.invalid : ""}`}
                             ref={emailInputRef}
@@ -66,14 +73,7 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                             placeholder={t('signUp.emailPlaceholder')}
                         />
                     </label>
-
-                    {invalidEntry && (
-                        <span role="alert" className={styles.errorMessage}>
-                            {t("signUp.invalidEntryMessage")}
-                        </span>
-                    )}
-
-                    <Button content={t('signUp.submitButton')}/>
+                    <Button content={t('signUp.submitButton')} />
                 </form>
             </div>
             <div className={styles.right}>

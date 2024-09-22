@@ -22,6 +22,14 @@
   }
 }
 
+.labels {
+  @include flex-row(space-between);
+  span {
+    @include text-body-small;
+    color: $tomato;
+  }
+}
+
 .input {
   @include flex-column;
   @include text-body;
@@ -43,7 +51,8 @@
   }
 
   &.invalid {
-    border: 3px solid red;
+    border: 1px solid $tomato;
+    background-color: $tomato-15;
   }
 }
 
