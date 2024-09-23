@@ -49,9 +49,9 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                 <h1>{t("signUp.stayUpdated")}</h1>
                 <p>{t("signUp.callToAction")}</p>
                 <ul>
-                    <li><img src={iconList} alt="" />{t("signUp.bullet1")}</li>
-                    <li><img src={iconList} alt="" />{t("signUp.bullet2")}</li>
-                    <li><img src={iconList} alt="" />{t("signUp.bullet3")}</li>
+                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet1")}</span></li>
+                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet2")}</span></li>
+                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet3")}</span></li>
                 </ul>
                 <form className={styles.form} onSubmit={handleSubmission}>
                     <label>
