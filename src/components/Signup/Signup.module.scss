@@ -9,23 +9,19 @@
   gap: $spacing-64;
   background-color: $white;
   border-radius: 2.25rem;
-  width: 58rem;
-  height: 40.0625rem;
+  max-width: 58rem;
+  position: relative;
 }
 
 .form {
   @include flex-column;
   gap: $spacing-24;
-
-  label {
-    @include text-body-small;
-  }
 }
 
 .labels {
+  @include text-body-small;
   @include flex-row(space-between);
   span {
-    @include text-body-small;
     color: $tomato;
   }
 }
@@ -59,7 +55,7 @@
 
 .left {
   @include flex-column();
-  padding-left: $spacing-64;
+  padding: $spacing-24 0rem $spacing-24 $spacing-64;
   color: $dark-navy;
 
   h1 {
@@ -90,7 +86,8 @@
 }
 
 .right {
-  margin-right: $spacing-24;
+  @include flex-column(center);
+  padding: $spacing-24 $spacing-24 $spacing-24 0rem;
 }
 
 .fadeInComponent {
