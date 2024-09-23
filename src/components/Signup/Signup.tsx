@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import styles from "./Signup.module.scss"
 import illustration from '../../assets/images/illustration-sign-up-desktop.svg'
 import Button from "../shared/Button"
+import iconList from "../../assets/images/icon-list.svg"
 
 type SignupProps = {
     setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>
@@ -48,9 +49,9 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                 <h1>{t("signUp.stayUpdated")}</h1>
                 <p>{t("signUp.callToAction")}</p>
                 <ul>
-                    <li>{t("signUp.bullet1")}</li>
-                    <li>{t("signUp.bullet2")}</li>
-                    <li>{t("signUp.bullet3")}</li>
+                    <li><img src={iconList} alt="" />{t("signUp.bullet1")}</li>
+                    <li><img src={iconList} alt="" />{t("signUp.bullet2")}</li>
+                    <li><img src={iconList} alt="" />{t("signUp.bullet3")}</li>
                 </ul>
                 <form className={styles.form} onSubmit={handleSubmission}>
                     <label>

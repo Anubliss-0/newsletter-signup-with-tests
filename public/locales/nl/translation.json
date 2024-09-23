@@ -12,7 +12,7 @@
     },
     "confirmation": {
       "thanks": "Bedankt voor je inschrijving!",
-      "message": "Een bevestigingsmail is verzonden naar <strong>{{email}}</strong>. Open de mail en klik op de knop om je inschrijving te bevestigen.",
+      "message": "<p>Een bevestigingsmail is verzonden naar <strong>{{email}}</strong>. Open de mail en klik op de knop om je inschrijving te bevestigen.</p>",
       "dismiss": "Bericht sluiten"
     }
   }

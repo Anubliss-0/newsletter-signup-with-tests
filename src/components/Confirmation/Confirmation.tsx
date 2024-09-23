@@ -37,9 +37,9 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress }: Confirm
       <Trans
         i18nKey="confirmation.message"
         values={{ email: emailAddress }}
-        components={{ strong: <strong /> }}
+        components={{ strong: <strong />, p: <p />}}
       >
-        A confirmation email has been sent to <strong>{emailAddress}</strong>. Please open it and click the button inside to confirm your subscription.
+        <p>A confirmation email has been sent to <strong>{emailAddress}</strong>. Please open it and click the button inside to confirm your subscription.</p>
       </Trans>
       <Button content={t("confirmation.dismiss")} onClick={handleDismiss} />
     </section>

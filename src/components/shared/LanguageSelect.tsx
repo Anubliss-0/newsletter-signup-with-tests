@@ -17,7 +17,7 @@ function LanguageSelect() {
                         <option value="en">English</option>
                         <option value="nl">Nederlands</option>
                         <option value="es">Español</option>
-                        <option value="de">Deutsch</option>
+                        <option value="de">Deutsch</option> 
                         <option value="fr">Français</option>
                     </select>
                 </div>

@@ -12,7 +12,7 @@
     },
     "confirmation": {
       "thanks": "Danke für Ihre Anmeldung!",
-      "message": "Eine Bestätigungs-E-Mail wurde an <strong>{{email}}</strong> gesendet. Bitte öffnen Sie die E-Mail und klicken Sie auf die Schaltfläche, um Ihre Anmeldung zu bestätigen.",
+      "message": "<p>Eine Bestätigungs-E-Mail wurde an <strong>{{email}}</strong> gesendet. Bitte öffnen Sie die E-Mail und klicken Sie auf die Schaltfläche, um Ihre Anmeldung zu bestätigen.</p>",
       "dismiss": "Nachricht schließen"
     }
   }

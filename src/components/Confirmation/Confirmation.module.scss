@@ -7,10 +7,22 @@
   @include flex-column(center);
   background-color: $white;
   border-radius: 2.25rem;
-  width: 31.5rem;
+  padding: $spacing-48 $spacing-64;
+  max-width: 31.5rem;
+  color: $dark-navy;
 
   img {
     width: 4rem;
+  }
+
+  h1 {
+    @include text-heading;
+    margin: 2.5rem 0 1.5rem
+  }
+
+  p {
+    @include text-body;
+    margin-bottom: 2.5rem;
   }
 }
 

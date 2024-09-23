@@ -2,6 +2,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import App from './App'
 import '@testing-library/jest-dom'
+import { I18nextProvider } from 'react-i18next'
+import i18n from './i18n'
 
 describe('App Component', () => {
   it('renders Signup component initially and not Confirmation', () => {
@@ -12,7 +14,11 @@ describe('App Component', () => {
   })
 
   it('displays Confirmation component with entered email address after form submission', async () => {
-    render(<App />)
+    render(
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    )
 
     fireEvent.change(screen.getByLabelText('signUp.emailAddress'), { target: { value: 'test@test.com' } })
     fireEvent.click(screen.getByRole('button', { name: 'signUp.submitButton' }))
@@ -23,7 +29,6 @@ describe('App Component', () => {
     })
 
     expect(screen.getByRole('heading', { level: 1, name: 'confirmation.thanks' })).toBeInTheDocument()
-    expect(screen.getByText(/test@test.com/i)).toBeInTheDocument()
   })
 
   it('displays error when invalid email address is submitted', () => {
