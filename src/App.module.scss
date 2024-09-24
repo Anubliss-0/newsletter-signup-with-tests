@@ -3,4 +3,8 @@
 .appContainer {
     height: 100vh;
     @include flex-column(center, center);
+
+    @include respond-to-phone {
+        display: block;
+    }
 }

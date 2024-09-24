@@ -6,11 +6,67 @@
 .signup {
   @include text-body;
   @include flex-row(center, center);
+  margin: $spacing-24;
   gap: $spacing-64;
   background-color: $white;
   border-radius: 2.25rem;
   max-width: 58rem;
   position: relative;
+
+  @include respond-to-phone {
+    @include flex-column;
+    width: 100%;
+    margin: 0rem;
+    border-radius: 0%;
+    gap: $spacing-40;
+  }
+}
+
+.content {
+  @include flex-column();
+  padding: $spacing-24 0rem $spacing-24 $spacing-64;
+  color: $dark-navy;
+  gap: $spacing-40;
+
+  @include respond-to-phone {
+    padding: 0px $spacing-24 $spacing-24;
+  }
+}
+
+.callToAction {
+  @include flex-column;
+  @include text-body;
+  gap: $spacing-24;
+
+  h1 {
+    @include text-heading;
+    margin: 0;
+
+    @include respond-to-phone {
+      @include text-heading-mobile;
+    }
+  }
+
+  p {
+    margin: 0rem;
+  }
+
+  ul {
+    @include flex-column;
+    gap: $spacing-10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    @include flex-row(start, start);
+    gap: $spacing-16;
+
+    img {
+      width: 1.3125rem;
+    }
+  }
 }
 
 .form {
@@ -52,42 +108,28 @@
   }
 }
 
+.desktopImage {
+  @include flex-column(center);
+  padding: $spacing-24 $spacing-24 $spacing-24 0rem;
 
-.left {
-  @include flex-column();
-  padding: $spacing-24 0rem $spacing-24 $spacing-64;
-  color: $dark-navy;
-
-  h1 {
-    @include text-heading;
-    margin: 0;
-  }
-
-  p {
-    margin: $spacing-24 0px;
-  }
-
-  ul {
-    @include flex-column;
-    gap: $spacing-10;
-    list-style: none;
-    padding: 0;
-    margin: 0px 0px $spacing-40;
-  }
-
-  li {
-    @include flex-row(start, start);
-    gap: $spacing-16;
-
-    img {
-      width: 1.3125rem;
-    }
+  @include respond-to-phone {
+    display: none;
   }
 }
 
-.right {
-  @include flex-column(center);
-  padding: $spacing-24 $spacing-24 $spacing-24 0rem;
+.mobileImage {
+  display: none;
+
+  @include respond-to-phone {
+    display: block;
+  }
+
+  img {
+    @include respond-to-phone {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
 .fadeInComponent {

@@ -1,7 +1,8 @@
 import { useState, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import styles from "./Signup.module.scss"
-import illustration from '../../assets/images/illustration-sign-up-desktop.svg'
+import desktopImage from '../../assets/images/illustration-sign-up-desktop.svg'
+import mobileImage from "../../assets/images/illustration-sign-up-mobile.svg"
 import Button from "../shared/Button"
 import iconList from "../../assets/images/icon-list.svg"
 
@@ -45,14 +46,19 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
             onAnimationEnd={onFadeEnd}
             data-testid="sign-up"
         >
-            <div className={styles.left}>
-                <h1>{t("signUp.stayUpdated")}</h1>
-                <p>{t("signUp.callToAction")}</p>
-                <ul>
-                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet1")}</span></li>
-                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet2")}</span></li>
-                    <li><img src={iconList} alt="" /><span>{t("signUp.bullet3")}</span></li>
-                </ul>
+            <div className={styles.mobileImage}>
+                <img src={mobileImage} alt="" />
+            </div>
+            <div className={styles.content}>
+                <div className={styles.callToAction}>
+                    <h1>{t("signUp.stayUpdated")}</h1>
+                    <p>{t("signUp.callToAction")}</p>
+                    <ul>
+                        <li><img src={iconList} alt="" /><span>{t("signUp.bullet1")}</span></li>
+                        <li><img src={iconList} alt="" /><span>{t("signUp.bullet2")}</span></li>
+                        <li><img src={iconList} alt="" /><span>{t("signUp.bullet3")}</span></li>
+                    </ul>
+                </div>
                 <form className={styles.form} onSubmit={handleSubmission}>
                     <label>
                         <div className={styles.labels}>
@@ -77,8 +83,8 @@ function Signup({ setIsSubmitted, setEmailAddress }: SignupProps) {
                     <Button content={t('signUp.submitButton')} />
                 </form>
             </div>
-            <div className={styles.right}>
-                <img src={illustration} alt="" />
+            <div className={styles.desktopImage}>
+                <img src={desktopImage} alt="" />
             </div>
         </section>
     )
