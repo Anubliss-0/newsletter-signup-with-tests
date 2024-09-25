@@ -8,10 +8,21 @@
   background-color: $white;
   border-radius: 2.25rem;
   padding: $spacing-48 $spacing-64;
-  max-width: 31.5rem;
+  width: 31.5rem;
   color: $dark-navy;
   position: relative;
 
+  @include respond-to-phone {
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    justify-content: space-between;
+    padding-top: 9.3125rem;
+  }
+
+}
+
+.content {
   img {
     width: 4rem;
   }
@@ -25,6 +36,7 @@
     @include text-body;
     margin-bottom: 2.5rem;
   }
+
 }
 
 .fadeInComponent {

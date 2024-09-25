@@ -1,4 +1,7 @@
+@import '../../styles//typography.scss';
+
 .languageSelect {
+    @include text-body;
     position: absolute;
     z-index: 3;
 }

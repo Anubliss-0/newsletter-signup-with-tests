@@ -32,15 +32,17 @@ function Confirmation({ setIsSubmitted, emailAddress, setEmailAddress }: Confirm
       onAnimationEnd={onFadeEnd}
       data-testid="confirmation"
     >
-      <img src={successImg} alt="" />
-      <h1>{t("confirmation.thanks")}</h1>
-      <Trans
-        i18nKey="confirmation.message"
-        values={{ email: emailAddress }}
-        components={{ strong: <strong />, p: <p />}}
-      >
-        <p>A confirmation email has been sent to <strong>{emailAddress}</strong>. Please open it and click the button inside to confirm your subscription.</p>
-      </Trans>
+      <div className={styles.content}>
+        <img src={successImg} alt="" />
+        <h1>{t("confirmation.thanks")}</h1>
+        <Trans
+          i18nKey="confirmation.message"
+          values={{ email: emailAddress }}
+          components={{ strong: <strong />, p: <p /> }}
+        >
+          <p>A confirmation email has been sent to <strong>{emailAddress}</strong>. Please open it and click the button inside to confirm your subscription.</p>
+        </Trans>
+      </div>
       <Button content={t("confirmation.dismiss")} onClick={handleDismiss} />
     </section>
   )
