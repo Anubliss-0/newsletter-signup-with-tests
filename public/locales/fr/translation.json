@@ -1,0 +1,18 @@
+{
+    "signUp": {
+        "stayUpdated": "Restez informé !",
+        "callToAction": "Rejoignez plus de 60 000 chefs de produit recevant des mises à jour mensuelles sur :",
+        "bullet1": "Découverte de produit et construction de ce qui compte",
+        "bullet2": "Mesurer pour garantir le succès des mises à jour",
+        "bullet3": "Et bien plus encore !",
+        "emailAddress": "Adresse e-mail",
+        "emailPlaceholder": "email@entreprise.com",
+        "submitButton": "S'abonner à la newsletter mensuelle",
+        "invalidEntryMessage": "E-mail valide requis"
+    },
+    "confirmation": {
+        "thanks": "Merci pour votre abonnement !",
+        "message": "<p>Un e-mail de confirmation a été envoyé à <strong>{{email}}</strong>. Veuillez l'ouvrir et cliquer sur le bouton à l'intérieur pour confirmer votre abonnement.</p>",
+        "dismiss": "Ignorer le message"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "signUp": {
+        "stayUpdated": "¡Mantente actualizado!",
+        "callToAction": "Únete a más de 60,000 gerentes de producto que reciben actualizaciones mensuales sobre:",
+        "bullet1": "Descubrimiento de productos y construcción de lo que importa",
+        "bullet2": "Medición para asegurar que las actualizaciones sean un éxito",
+        "bullet3": "¡Y mucho más!",
+        "emailAddress": "Correo electrónico",
+        "emailPlaceholder": "correo@empresa.com",
+        "submitButton": "Suscribirse al boletín mensual",
+        "invalidEntryMessage": "Se requiere un correo electrónico válido"
+    },
+    "confirmation": {
+        "thanks": "¡Gracias por suscribirte!",
+        "message": "<p>Se ha enviado un correo de confirmación a <strong>{{email}}</strong>. Por favor, ábrelo y haz clic en el botón dentro para confirmar tu suscripción.</p>",
+        "dismiss": "Descartar mensaje"
+    }
+}
